@@ -24,4 +24,8 @@ public interface BoardDAO {
 	
 	//selectList
 	public List<BoardDTO> selectList()throws Exception;
+	
+	public int HitUpdate(int num)throws Exception;
+	
+	
 }

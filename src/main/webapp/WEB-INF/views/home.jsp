@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<!-- <a href="./notice/noticeList?name=notice">Go Notice</a> -->
+<a href="./notice/noticeList">Go Notice</a>
 </body>
 </html>
