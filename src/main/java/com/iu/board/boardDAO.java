@@ -2,13 +2,13 @@ package com.iu.board;
 
 import java.util.List;
 
-public interface boardDAO {
+public interface BoardDAO {
 
 	//totalCount
 	public int getTotalCount(String kind, String search) throws Exception;
 	
 	//update
-	public int update(boardDTO boardDTO) throws Exception;
+	public int update(BoardDTO boardDTO) throws Exception;
 	
 	//delete
 	public int delete(int num)throws Exception;
@@ -17,11 +17,11 @@ public interface boardDAO {
 	public int hitUpdate(int num)throws Exception;
 	
 	//insert
-	public int insert(boardDTO boardDTO) throws Exception;
+	public int insert(BoardDTO boardDTO) throws Exception;
 	
 	//selectOne
-	public boardDTO selectOne(int num) throws Exception;
+	public BoardDTO selectOne(int num) throws Exception;
 	
 	//selectList
-	public List<boardDTO> selectList()throws Exception;
+	public List<BoardDTO> selectList()throws Exception;
 }

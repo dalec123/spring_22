@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iu.board.boardDTO;
+import com.iu.board.BoardDTO;
 import com.iu.util.DBConnector;
 
-public class noticeDAO {
+public class NoticeDAO {
 
 	//totalCount
 		public int getTotalCount(String kind, String search) throws Exception {
@@ -52,7 +52,7 @@ public class noticeDAO {
 		}
 		
 		//update
-		public int update(boardDTO boardDTO) throws Exception{
+		public int update(BoardDTO boardDTO) throws Exception{
 			Connection con = DBConnector.getConnect();
 			String sql ="update notice set writer=?, title=?, contents=? where num=?";
 			
@@ -72,7 +72,7 @@ public class noticeDAO {
 		
 		
 		//write
-		public int insert(boardDTO noticeDTO) throws Exception {
+		public int insert(BoardDTO noticeDTO) throws Exception {
 			Connection con = DBConnector.getConnect();
 			String sql ="insert into notice values(board_seq.nextval,?,?,?,sysdate,0)";
 			PreparedStatement st = con.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class noticeDAO {
 		
 		
 		//view
-		public boardDTO selectOne(int num) throws Exception{
+		public BoardDTO selectOne(int num) throws Exception{
 			Connection con = DBConnector.getConnect();
 			
 			String sql ="select * from notice where num=?";
@@ -99,10 +99,10 @@ public class noticeDAO {
 			
 			ResultSet rs = st.executeQuery();
 			
-			noticeDTO noticeDTO=null;
+			NoticeDTO noticeDTO=null;
 			
 			if(rs.next()) {
-				noticeDTO = new noticeDTO();
+				noticeDTO = new NoticeDTO();
 				noticeDTO.setNum(rs.getInt("num"));
 				noticeDTO.setWriter(rs.getString("writer"));
 				noticeDTO.setTitle(rs.getString("title"));
@@ -119,10 +119,10 @@ public class noticeDAO {
 		
 		
 		//list
-		public List<boardDTO> selectList() throws Exception {
+		public List<BoardDTO> selectList() throws Exception {
 			Connection con = DBConnector.getConnect();
 			
-			List<boardDTO> ar = new ArrayList<boardDTO>();
+			List<BoardDTO> ar = new ArrayList<BoardDTO>();
 			
 			String sql = "select * from "
 					+ "(select rownum R, N.* from "
@@ -133,7 +133,7 @@ public class noticeDAO {
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {
-				noticeDTO noticeDTO = new noticeDTO();
+				NoticeDTO noticeDTO = new NoticeDTO();
 				noticeDTO.setNum(rs.getInt("num"));
 				noticeDTO.setWriter(rs.getString("writer"));
 				noticeDTO.setTitle(rs.getString("title"));

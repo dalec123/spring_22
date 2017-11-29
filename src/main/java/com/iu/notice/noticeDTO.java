@@ -1,7 +1,7 @@
 package com.iu.notice;
 
-import com.iu.board.boardDTO;
+import com.iu.board.BoardDTO;
 
-public class noticeDTO extends boardDTO{
+public class NoticeDTO extends BoardDTO{
 
 }

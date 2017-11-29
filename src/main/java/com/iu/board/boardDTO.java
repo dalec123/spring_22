@@ -2,7 +2,7 @@ package com.iu.board;
 
 import java.sql.Date;
 
-public class boardDTO {
+public class BoardDTO {
 	private int num;
 	private String writer;
 	private String title;
