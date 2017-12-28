@@ -14,15 +14,30 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	
+	<beans:bean class="com.iu.util.FileDownload" id="filedown"></beans:bean>
+	
+
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"/> <!-- 처음에 이걸 찾고 없으면 밑에 있는 1을 찾음 -->
+	</beans:bean> <!-- 4번째 방법 -->
+	
+
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="1"/>
 	</beans:bean>
 	
-	<context:component-scan base-package="com.iu.s2" />
 	
 	
+	
+	
+	<context:component-scan base-package="com.iu.s2" use-default-filters="false"><!-- <-이게없으면 컨트롤러에 @controller객체 생성x -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<!-- <context:component-scan base-package="com.iu.notice"></context:component-scan> <-com.iu.notice까지 범위를 확장 -->
 	
 </beans:beans>

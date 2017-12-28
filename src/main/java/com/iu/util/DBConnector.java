@@ -9,7 +9,7 @@ public class DBConnector {
 		 //1. login
 	    String user = "user01";
 	    String password = "user01";
-	    String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	    String url = "jdbc:oracle:thin:@192.168.20.6:1521:xe";
 	    String driver = "oracle.jdbc.driver.OracleDriver";
 	    //2. driver생성
 	    Class.forName(driver);

@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<bean class="com.iu.util.FileSaver" name="fileSaver"/>
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+		<!-- spring 설정 파일 -->
+		<!-- <beans:bean>이 아님 그냥<bean>-->
 		
+		<!-- <bean class="com.iu.qna.QnaDAO" name="qnaDAO" />
+		<bean class="com.iu.qna.QnaService" name="QnaService">
+			<property name="qnaDAO" ref="qnaDAO"></property>
+		</bean> -->
+		
+		<context:component-scan base-package="com.iu.notice" use-default-filters="true">
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+			<!-- NoticeController의 import에 있는 fullpakage -->
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.iu.qna" use-default-filters="true">
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.iu.file">
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<context:component-scan base-package="com.iu.member">
+			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		</context:component-scan>
+		
+		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<property name="maxUploadSize" value="10485760"></property>
+		</bean>
 </beans>
+
+<!-- se-default-filters="true"모든 @Annotation을 스캔 -->
